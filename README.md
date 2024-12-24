@@ -68,3 +68,15 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+Performance
+# Debouncing 
+--  The Difference between two key-press elements 
+ Typing slow=200ms
+ typing fast=30ms
+
+ # Cache
+ i have stored search results in array (Time complex)= O(n)
+
+
+ // Infinite scrolling is much better than pagination
