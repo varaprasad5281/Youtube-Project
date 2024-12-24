@@ -20,8 +20,8 @@ const WatchPage = () => {
 
   return (
     <div className="md:px-5 flex flex-col w-full sm:px-2">
-      <div className="flex-col md:px-5 flex justify-between w-full gap-5 sm:px-2">
-        <div className="flex-col w-full">
+      <div className="md:px-5 sm:flex justify-between w-full gap-5 sm:px-2">
+        <div className="flex-col md:w-full md:flex">
           <iframe
             className="w-full rounded-lg"
             height="500"
