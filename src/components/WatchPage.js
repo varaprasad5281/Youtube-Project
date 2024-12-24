@@ -9,7 +9,7 @@ import VideoContainer from "./VideoContainer";
 const WatchPage = () => {
   const [searchParams] = useSearchParams();
   const dispatch = useDispatch();
-  const [isRecommended, setIsRecommended] = useState(false);
+  const [isRecommended, setIsRecommended] = useState(true);
 
   useEffect(() => {
     dispatch(closeMenu());
@@ -20,7 +20,7 @@ const WatchPage = () => {
 
   return (
     <div className="md:px-5 flex flex-col w-full sm:px-2">
-      <div className="md:px-5 flex justify-between w-full gap-5 sm:px-2">
+      <div className="flex-col md:px-5 flex justify-between w-full gap-5 sm:px-2">
         <div className="flex-col w-full">
           <iframe
             className="w-full rounded-lg"
@@ -36,7 +36,7 @@ const WatchPage = () => {
             <CommentsContainer />
           </div>
         </div>
-        <div className="hidden md:max-w-[22%] w-full md:block">
+        <div className="md:max-w-[22%] w-full md:block">
           <button
             className="bg-green-500 p-3 rounded-lg"
             onClick={hanldeRecommended}
