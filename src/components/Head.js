@@ -62,7 +62,7 @@ const Head = () => {
   const searchValue = searchQuery.length > 1;
 
   return (
-    <div className="flex gap-4 items-center bg-white justify-between p-3 shadow-lg sticky top-0 z-[9999] h-16">
+    <div className="flex gap-4 items-center bg-white justify-between p-3 sm:px-5 shadow-lg sticky top-0 z-[9999] h-16">
       <div className="left-3 flex items-center sm:left-5 shrink-0">
         <img
           onClick={() => toggleMenuHandler()}
@@ -91,7 +91,7 @@ const Head = () => {
       <form onSubmit={handleSubmit} className="max-w-[600px] w-full">
         <div className="flex justify-end sm:justify-center">
           <input
-            className="w-full border border-gray-400 rounded-l-full py-1 px-3"
+            className="w-full border border-gray-400 rounded-l-full py-2 px-5"
             type="text"
             value={searchQuery}
             onFocus={() => setShowSuggestions(true)}
