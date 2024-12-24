@@ -47,7 +47,7 @@ const VideoContainer = () => {
   return (
     <div className="grid grid-cols-[repeat(auto-fit,_minmax(300px,_1fr))] gap-3">
       {videoList.length === 0 ? (
-        <p>No videos found.</p>
+        <p>If no videos found search something!</p>
       ) : (
         videoList.map((video) => (
           <Link
