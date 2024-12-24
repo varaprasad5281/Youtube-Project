@@ -1,24 +1,27 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { closeMenu } from "../utils/appSlice";
 import { useSearchParams } from "react-router-dom";
 import CommentsContainer from "./CommentsContainer";
 import LiveChat from "./LiveChat";
+import VideoContainer from "./VideoContainer";
 
 const WatchPage = () => {
   const [searchParams] = useSearchParams();
   const dispatch = useDispatch();
+  const [isRecommended, setIsRecommended] = useState(false);
 
   useEffect(() => {
     dispatch(closeMenu());
   }, [dispatch]);
+  const hanldeRecommended = () => {
+    setIsRecommended(!isRecommended);
+  };
 
   return (
-    <div className="px-5 flex flex-col w-full">
-      {/* Video and LiveChat Section */}
-      <div className="px-5 flex w-full gap-5">
-        {/* Video Player */}
-        <div className="flex-1">
+    <div className="md:px-5 flex flex-col w-full sm:px-2">
+      <div className="md:px-5 flex justify-between w-full gap-5 sm:px-2">
+        <div className="flex-col w-full">
           <iframe
             className="w-full rounded-lg"
             height="500"
@@ -29,15 +32,19 @@ const WatchPage = () => {
             referrerPolicy="strict-origin-when-cross-origin"
             allowFullScreen
           ></iframe>
+          <div className="w-full hidden md:mt-5 md:block">
+            <CommentsContainer />
+          </div>
         </div>
-
-        <div className="min-w-[22%]">
-          <LiveChat />
+        <div className="hidden md:max-w-[22%] w-full md:block">
+          <button
+            className="bg-green-500 p-3 rounded-lg"
+            onClick={hanldeRecommended}
+          >
+            {isRecommended ? "Live Chat" : "Recommended Videos"}
+          </button>
+          {isRecommended ? <VideoContainer /> : <LiveChat />}
         </div>
-      </div>
-
-      <div className="mt-5">
-        <CommentsContainer />
       </div>
     </div>
   );
