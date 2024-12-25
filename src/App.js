@@ -6,6 +6,7 @@ import store from "./utils/store";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Main from "./components/Main";
 import WatchPage from "./components/WatchPage";
+import Popup from "./components/Popup";
 
 const appRouter = createBrowserRouter([
   {
@@ -29,6 +30,7 @@ function App() {
     <Provider store={store}>
       <div>
         <Head />
+        <Popup />
         <RouterProvider router={appRouter} />
       </div>
     </Provider>

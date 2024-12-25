@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { toggleMenu } from "../utils/appSlice";
+import { isAvatarChange, toggleMenu } from "../utils/appSlice";
 import { LOGO_LINK, YOUTUBE_SEARCH_API } from "../utils/contstants";
 import { addSearchTerm, cacheReuslts } from "../utils/searchSlice";
 import useSearchVideo from "../utils/useSearchVideo";
+import Avatar from "./Avatar";
 
 const Head = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [searchData, setSearchData] = useState([]);
+  const [error, setError] = useState("");
   const [showsSuggestion, setShowSuggestions] = useState(false);
   useSearchVideo();
   const searchCache = useSelector((store) => store.search);
@@ -33,14 +35,21 @@ const Head = () => {
   }, [searchQuery]);
 
   const getSearchSuggestion = async () => {
-    const data = await fetch(YOUTUBE_SEARCH_API + searchQuery);
-    const json = await data.json();
-    setSearchData(json[1]);
-    dispatch(
-      cacheReuslts({
-        [searchQuery]: json[1],
-      })
-    );
+    try {
+      const data = await fetch(YOUTUBE_SEARCH_API + searchQuery);
+      if (!data.ok) {
+        throw new Error("Error while fetching the data");
+      }
+      const json = await data.json();
+      setSearchData(json[1]);
+      dispatch(
+        cacheReuslts({
+          [searchQuery]: json[1],
+        })
+      );
+    } catch (error) {
+      setError("Error occured while fetchig the data form the API", error);
+    }
   };
 
   const toggleMenuHandler = () => {
@@ -123,9 +132,7 @@ const Head = () => {
           </div>
         )}
       </form>
-      <div className="hidden sm:flex items-center justify-center p-3 bg-blue-500 rounded-3xl h-9">
-        <p className="text-white text-xl">V</p>
-      </div>
+      <Avatar />
     </div>
   );
 };

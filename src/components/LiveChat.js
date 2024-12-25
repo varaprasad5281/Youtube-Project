@@ -7,8 +7,8 @@ import { generateRandomName, randomMessage } from "../utils/helper";
 const LiveChat = () => {
   const dispatch = useDispatch();
   const chatMessages = useSelector((store) => store.chat.messages);
+  const userName = useSelector((store) => store?.user?.name);
   const inputMessage = useRef("");
-  console.log(inputMessage.current.value);
   useEffect(() => {
     const i = setInterval(() => {
       // API POLLING
@@ -26,7 +26,10 @@ const LiveChat = () => {
   const handleMessageSubmit = (e) => {
     e.preventDefault();
     dispatch(
-      addMessage({ name: "Vara prasad", message: inputMessage.current.value })
+      addMessage({
+        name: userName,
+        message: inputMessage.current.value,
+      })
     );
     inputMessage.current.value = "";
   };

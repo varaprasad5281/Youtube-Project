@@ -19,8 +19,8 @@ const WatchPage = () => {
   };
 
   return (
-    <div className="md:px-5 flex flex-col w-full sm:px-2">
-      <div className="md:px-5 sm:flex justify-between w-full gap-5 sm:px-2">
+    <div className="p-2 flex flex-col w-full mt-3">
+      <div className="sm:flex justify-between w-full gap-5 sm:px-2">
         <div className="flex-col md:w-full md:flex">
           <iframe
             className="w-full rounded-lg"
@@ -32,6 +32,7 @@ const WatchPage = () => {
             referrerPolicy="strict-origin-when-cross-origin"
             allowFullScreen
           ></iframe>
+          <div></div>
           <div className="w-full hidden md:mt-5 md:block">
             <CommentsContainer />
           </div>
