@@ -9,7 +9,8 @@ const useSearchVideo = () => {
   const getSearchVideo = async () => {
     try {
       const response = await fetch(
-        `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=50&q=${searchTerm}&type=video&key=${VHUB_KEY}`
+        `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=50&q=${searchTerm}&type=video&key=` +
+          VHUB_KEY
       );
       if (!response.ok) {
         throw new Error(`Error: ${response.status} ${response.statusText}`);
