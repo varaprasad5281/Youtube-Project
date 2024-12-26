@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addSearchRelatedVideo } from "./searchSlice";
-
+import { VHUB_KEY } from "./contstants";
 const useSearchVideo = () => {
   const searchTerm = useSelector((store) => store.search.searchTermVideo);
   const dispatch = useDispatch();
@@ -9,7 +9,7 @@ const useSearchVideo = () => {
   const getSearchVideo = async () => {
     try {
       const response = await fetch(
-        `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=50&q=${searchTerm}&type=video&key=${process.env.REACT_APP_VHUB_KEY}`
+        `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=50&q=${searchTerm}&type=video&key=${VHUB_KEY}`
       );
       if (!response.ok) {
         throw new Error(`Error: ${response.status} ${response.statusText}`);
