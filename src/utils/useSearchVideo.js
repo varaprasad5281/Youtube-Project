@@ -1,11 +1,9 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addSearchRelatedVideo } from "./searchSlice";
-import { VHUB_KEY } from "./contstants";
 const useSearchVideo = () => {
   const searchTerm = useSelector((store) => store.search.searchTermVideo);
   const dispatch = useDispatch();
-
   const getSearchVideo = async () => {
     try {
       const response = await fetch(
