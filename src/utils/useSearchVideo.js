@@ -10,7 +10,7 @@ const useSearchVideo = () => {
     try {
       const response = await fetch(
         `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=50&q=${searchTerm}&type=video&key=` +
-          VHUB_KEY
+          process.env.REACT_APP_VHUB_KEY
       );
       if (!response.ok) {
         throw new Error(`Error: ${response.status} ${response.statusText}`);
