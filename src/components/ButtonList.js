@@ -14,6 +14,8 @@ const ButtonList = () => {
       {[
         "All",
         "Music",
+        "Pawan Kalyan",
+        "K Drama",
         "Telugu Cinema",
         "T-series",
         "Live",

@@ -23,7 +23,7 @@ const Popup = () => {
   if (!isPopup) return null;
 
   return (
-    <div className="absolute top-[50%] left-[50%] max-w-96 w-full transform translate-x-[-50%] translate-y-[-50%] p-4 bg-white shadow-lg rounded-lg z-50">
+    <div className="fixed top-[50%] left-[50%] max-w-96 w-full transform translate-x-[-50%] translate-y-[-50%] p-4 bg-white shadow-lg rounded-lg z-50">
       <h1 className="font-bold text-xl">Enter Your Name to Proceed</h1>
       <form className="flex flex-col gap-4" onSubmit={handleUserInput}>
         <input

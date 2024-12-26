@@ -28,7 +28,10 @@ const Sidebar = () => {
     <div className="sticky h-[93vh] p-5 shadow-lg min-w-[15%] top-16 bottom-0 bg-white overflow-y-auto max-lg:hidden transition-all duration-700 delay-700 ease-linear">
       <ul className="flex flex-col gap-2">
         <li className="px-3 py-2 flex gap-4 items-center bg-gray-300 rounded-md cursor-pointer font-bold">
-          <button className="flex items-center gap-4 w-full text-left">
+          <button
+            onClick={() => handleSidebarClick("All")}
+            className="flex items-center gap-4 w-full text-left"
+          >
             <IoMdHome />
             Home
           </button>

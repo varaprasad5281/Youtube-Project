@@ -2,6 +2,8 @@ import React, { useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addComment } from "../utils/commentSlice";
 import Comment from "./Comment";
+import { LuSendHorizontal } from "react-icons/lu";
+
 // const commentsData = [
 //   {
 //     name: "Vara Prasad",
@@ -121,13 +123,16 @@ const CommentsContainer = () => {
   return (
     <div className="m-5 p-2 h-96 overflow-scroll">
       <h1 className="text-2xl font-bold">Comments: </h1>
-      <form onSubmit={handleCommentSubmit} className="mb-4">
+      <form onSubmit={handleCommentSubmit} className="mb-4 relative">
         <input
           ref={commentValue}
           className="p-3 border border-indigo-100 w-full"
           type="text"
           placeholder="Add your comment here..."
         />
+        <button type="submit" className="absolute top-3 right-4 text-2xl">
+          <LuSendHorizontal />
+        </button>
       </form>
       {/* <CommentsList comments={commentsData} /> */}
       <Comment />

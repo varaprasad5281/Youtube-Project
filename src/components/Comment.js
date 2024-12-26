@@ -2,6 +2,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Avatar from "./Avatar";
 import { removeComment } from "../utils/commentSlice";
+import { RiDeleteBin6Line } from "react-icons/ri";
 
 const Comment = () => {
   const allComments = useSelector((store) => store.comments?.comments);
@@ -15,7 +16,10 @@ const Comment = () => {
       {allComments &&
         allComments.map((comment, index) => {
           return (
-            <div className="cursor-pointer flex justify-between shadow-sm bg-gray-100 p-2 rounded-lg my-2">
+            <div
+              key={index}
+              className="cursor-pointer flex justify-between shadow-sm bg-gray-100 p-2 rounded-lg my-2"
+            >
               <div className="flex">
                 <Avatar />
                 <div className="px-3">
@@ -27,7 +31,7 @@ const Comment = () => {
                 onClick={() => handleRemoveComment(index)}
                 className="p-2 bg-red-600 rounded-lg text-white"
               >
-                Remove
+                <RiDeleteBin6Line />
               </button>
             </div>
           );

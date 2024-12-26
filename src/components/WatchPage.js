@@ -5,9 +5,11 @@ import { useSearchParams } from "react-router-dom";
 import CommentsContainer from "./CommentsContainer";
 import LiveChat from "./LiveChat";
 import VideoContainer from "./VideoContainer";
+import useChannelDetails from "../utils/useChannelDetails";
 
 const WatchPage = () => {
   const [searchParams] = useSearchParams();
+  useChannelDetails();
   const dispatch = useDispatch();
   const [isRecommended, setIsRecommended] = useState(true);
 
