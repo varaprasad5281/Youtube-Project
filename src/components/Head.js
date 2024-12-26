@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { isAvatarChange, toggleMenu } from "../utils/appSlice";
+import { toggleMenu } from "../utils/appSlice";
 import { LOGO_LINK, YOUTUBE_SEARCH_API } from "../utils/contstants";
 import { addSearchTerm, cacheReuslts } from "../utils/searchSlice";
 import useSearchVideo from "../utils/useSearchVideo";
