@@ -16,7 +16,9 @@ const VideoContainer = () => {
     const fetchVideos = async () => {
       try {
         setLoading(true);
-        const data = await fetch(YOUTUBE_VIDEOS_API);
+        const data = await fetch(
+          YOUTUBE_VIDEOS_API + process.env.REACT_APP_VHUB_KEY
+        );
         if (!data.ok) {
           setError("Error while fetching the data from the API");
         }
