@@ -9,6 +9,7 @@ const Avatar = () => {
   const firstLetter = userName ? userName.charAt(0).toUpperCase() : "V";
 
   const handleUserChange = () => {
+    window.sessionStorage.clear();
     dispatch(isAvatarChange());
   };
 
