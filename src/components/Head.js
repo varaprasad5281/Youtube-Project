@@ -36,7 +36,9 @@ const Head = () => {
 
   const getSearchSuggestion = async () => {
     try {
-      const data = await fetch(YOUTUBE_SEARCH_API + searchQuery);
+      const data = await fetch(YOUTUBE_SEARCH_API + searchQuery, {
+        mode: "no-cors",
+      });
       if (!data.ok) {
         throw new Error("Error while fetching the data");
       }
