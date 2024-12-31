@@ -50,7 +50,7 @@ const LiveChat = () => {
       <form onSubmit={handleMessageSubmit} className="w-full ml-2">
         <input
           ref={inputMessage}
-          className="w-full border border-slate-300 p-2"
+          className="w-full border border-slate-300 p-2 bg-transparent"
           type="text"
           placeholder="comment here"
         ></input>

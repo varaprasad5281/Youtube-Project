@@ -17,6 +17,8 @@ import { addSearchTerm } from "../utils/searchSlice";
 const Sidebar = () => {
   const isMenuOpen = useSelector((store) => store.app.isMenuOpen);
   const dispatch = useDispatch();
+  const themeData = useSelector((store) => store.colors.styles[0]);
+  const textColor = useSelector((store) => store.colors.isDarkMode);
 
   // Early return
   if (!isMenuOpen) return null;
@@ -25,9 +27,15 @@ const Sidebar = () => {
   };
 
   return (
-    <div className="sticky h-[93vh] p-5 shadow-lg min-w-[15%] top-16 bottom-0 bg-white overflow-y-auto max-lg:hidden transition-all duration-700 delay-700 ease-linear">
+    <div
+      className={`${themeData} sticky h-[93vh] p-5 shadow-lg min-w-[15%] top-16 bottom- overflow-y-auto max-lg:hidden`}
+    >
       <ul className="flex flex-col gap-2">
-        <li className="px-3 py-2 flex gap-4 items-center bg-gray-300 rounded-md cursor-pointer font-bold">
+        <li
+          className={`px-3 py-2 flex gap-4 items-center rounded-md cursor-pointer ${
+            textColor ? "text-white" : "text-black"
+          } hover:bg-gray-300 hover:text-black`}
+        >
           <button
             onClick={() => handleSidebarClick("All")}
             className="flex items-center gap-4 w-full text-left"
@@ -36,7 +44,11 @@ const Sidebar = () => {
             Home
           </button>
         </li>
-        <li className="px-3 py-2 flex gap-4 items-center hover:bg-gray-300 rounded-md cursor-pointer">
+        <li
+          className={`px-3 py-2 flex gap-4 items-center rounded-md cursor-pointer ${
+            textColor ? "text-white" : "text-black"
+          } hover:bg-gray-300 hover:text-black`}
+        >
           <button
             onClick={() => handleSidebarClick("Shorts")}
             className="flex items-center gap-4 w-full text-left"
@@ -45,7 +57,11 @@ const Sidebar = () => {
             Shorts
           </button>
         </li>
-        <li className="px-3 py-2 flex gap-4 items-center hover:bg-gray-300 rounded-md cursor-pointer">
+        <li
+          className={`px-3 py-2 flex gap-4 items-center rounded-md cursor-pointer ${
+            textColor ? "text-white" : "text-black"
+          } hover:bg-gray-300 hover:text-black`}
+        >
           <button
             onClick={() => handleSidebarClick("subscriptions")}
             className="flex items-center gap-4 w-full text-left"
@@ -58,7 +74,11 @@ const Sidebar = () => {
 
       <h1 className="font-bold py-5">Explore</h1>
       <ul className="flex flex-col gap-2">
-        <li className="px-3 py-2 flex gap-4 items-center hover:bg-gray-300 rounded-md cursor-pointer">
+        <li
+          className={`px-3 py-2 flex gap-4 items-center rounded-md cursor-pointer ${
+            textColor ? "text-white" : "text-black"
+          } hover:bg-gray-300 hover:text-black`}
+        >
           <button
             onClick={() => handleSidebarClick("trending")}
             className="flex items-center gap-4 w-full text-left"
@@ -67,7 +87,11 @@ const Sidebar = () => {
             Trending
           </button>
         </li>
-        <li className="px-3 py-2 flex gap-4 items-center hover:bg-gray-300 rounded-md cursor-pointer">
+        <li
+          className={`px-3 py-2 flex gap-4 items-center rounded-md cursor-pointer ${
+            textColor ? "text-white" : "text-black"
+          } hover:bg-gray-300 hover:text-black`}
+        >
           <button
             onClick={() => handleSidebarClick("shopping")}
             className="flex items-center gap-4 w-full text-left"
@@ -76,7 +100,11 @@ const Sidebar = () => {
             Shopping
           </button>
         </li>
-        <li className="px-3 py-2 flex gap-4 items-center hover:bg-gray-300 rounded-md cursor-pointer">
+        <li
+          className={`px-3 py-2 flex gap-4 items-center rounded-md cursor-pointer ${
+            textColor ? "text-white" : "text-black"
+          } hover:bg-gray-300 hover:text-black`}
+        >
           <button
             onClick={() => handleSidebarClick("music")}
             className="flex items-center gap-4 w-full text-left"
@@ -85,7 +113,11 @@ const Sidebar = () => {
             Music
           </button>
         </li>
-        <li className="px-3 py-2 flex gap-4 items-center hover:bg-gray-300 rounded-md cursor-pointer">
+        <li
+          className={`px-3 py-2 flex gap-4 items-center rounded-md cursor-pointer ${
+            textColor ? "text-white" : "text-black"
+          } hover:bg-gray-300 hover:text-black`}
+        >
           <button
             onClick={() => handleSidebarClick("movies")}
             className="flex items-center gap-4 w-full text-left"
@@ -94,7 +126,11 @@ const Sidebar = () => {
             Movies
           </button>
         </li>
-        <li className="px-3 py-2 flex gap-4 items-center hover:bg-gray-300 rounded-md cursor-pointer">
+        <li
+          className={`px-3 py-2 flex gap-4 items-center rounded-md cursor-pointer ${
+            textColor ? "text-white" : "text-black"
+          } hover:bg-gray-300 hover:text-black`}
+        >
           <button
             onClick={() => handleSidebarClick("live")}
             className="flex items-center gap-4 w-full text-left"
@@ -103,7 +139,11 @@ const Sidebar = () => {
             Live
           </button>
         </li>
-        <li className="px-3 py-2 flex gap-4 items-center hover:bg-gray-300 rounded-md cursor-pointer">
+        <li
+          className={`px-3 py-2 flex gap-4 items-center rounded-md cursor-pointer ${
+            textColor ? "text-white" : "text-black"
+          } hover:bg-gray-300 hover:text-black`}
+        >
           <button
             onClick={() => handleSidebarClick("gaming")}
             className="flex items-center gap-4 w-full text-left"
@@ -112,7 +152,11 @@ const Sidebar = () => {
             Gaming
           </button>
         </li>
-        <li className="px-3 py-2 flex gap-4 items-center hover:bg-gray-300 rounded-md cursor-pointer">
+        <li
+          className={`px-3 py-2 flex gap-4 items-center rounded-md cursor-pointer ${
+            textColor ? "text-white" : "text-black"
+          } hover:bg-gray-300 hover:text-black`}
+        >
           <button
             onClick={() => handleSidebarClick("news")}
             className="flex items-center gap-4 w-full text-left"
@@ -121,7 +165,11 @@ const Sidebar = () => {
             News
           </button>
         </li>
-        <li className="px-3 py-2 flex gap-4 items-center hover:bg-gray-300 rounded-md cursor-pointer">
+        <li
+          className={`px-3 py-2 flex gap-4 items-center rounded-md cursor-pointer ${
+            textColor ? "text-white" : "text-black"
+          } hover:bg-gray-300 hover:text-black`}
+        >
           <button
             onClick={() => handleSidebarClick("sports")}
             className="flex items-center gap-4 w-full text-left"
@@ -130,7 +178,11 @@ const Sidebar = () => {
             Sports
           </button>
         </li>
-        <li className="px-3 py-2 flex gap-4 items-center hover:bg-gray-300 rounded-md cursor-pointer">
+        <li
+          className={`px-3 py-2 flex gap-4 items-center rounded-md cursor-pointer ${
+            textColor ? "text-white" : "text-black"
+          } hover:bg-gray-300 hover:text-black`}
+        >
           <button
             onClick={() => handleSidebarClick("podcast")}
             className="flex items-center gap-4 w-full text-left"
@@ -142,7 +194,11 @@ const Sidebar = () => {
       </ul>
       <h1 className="font-bold py-5">Subscription</h1>
       <ul className="flex flex-col gap-2">
-        <li className="px-3 py-2 flex gap-4 items-center hover:bg-gray-300 rounded-md cursor-pointer">
+        <li
+          className={`px-3 py-2 flex gap-4 items-center rounded-md cursor-pointer ${
+            textColor ? "text-white" : "text-black"
+          } hover:bg-gray-300 hover:text-black`}
+        >
           <button
             onClick={() => handleSidebarClick("aditya music")}
             className="flex items-center gap-4 w-full text-left"
@@ -150,7 +206,11 @@ const Sidebar = () => {
             Aditya Music
           </button>
         </li>
-        <li className="px-3 py-2 flex gap-4 items-center hover:bg-gray-300 rounded-md cursor-pointer">
+        <li
+          className={`px-3 py-2 flex gap-4 items-center rounded-md cursor-pointer ${
+            textColor ? "text-white" : "text-black"
+          } hover:bg-gray-300 hover:text-black`}
+        >
           <button
             onClick={() => handleSidebarClick("filmymoji")}
             className="flex items-center gap-4 w-full text-left"
@@ -158,7 +218,11 @@ const Sidebar = () => {
             Filmymoji
           </button>
         </li>
-        <li className="px-3 py-2 flex gap-4 items-center hover:bg-gray-300 rounded-md cursor-pointer">
+        <li
+          className={`px-3 py-2 flex gap-4 items-center rounded-md cursor-pointer ${
+            textColor ? "text-white" : "text-black"
+          } hover:bg-gray-300 hover:text-black`}
+        >
           <button
             onClick={() => handleSidebarClick("t-series")}
             className="flex items-center gap-4 w-full text-left"
@@ -166,7 +230,11 @@ const Sidebar = () => {
             T-series
           </button>
         </li>
-        <li className="px-3 py-2 flex gap-4 items-center hover:bg-gray-300 rounded-md cursor-pointer">
+        <li
+          className={`px-3 py-2 flex gap-4 items-center rounded-md cursor-pointer ${
+            textColor ? "text-white" : "text-black"
+          } hover:bg-gray-300 hover:text-black`}
+        >
           <button
             onClick={() => handleSidebarClick("Hindustan times")}
             className="flex items-center gap-4 w-full text-left"

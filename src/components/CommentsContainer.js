@@ -126,7 +126,7 @@ const CommentsContainer = () => {
       <form onSubmit={handleCommentSubmit} className="mb-4 relative">
         <input
           ref={commentValue}
-          className="p-3 border border-indigo-100 w-full"
+          className="p-3 bg-transparent border border-indigo-100 w-full"
           type="text"
           placeholder="Add your comment here..."
         />

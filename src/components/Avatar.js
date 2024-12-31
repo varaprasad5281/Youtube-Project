@@ -14,8 +14,8 @@ const Avatar = () => {
   };
 
   return (
-    <div onClick={handleUserChange} className="cursor-pointer">
-      <div className="hidden sm:flex items-center justify-center p-3 bg-blue-500 rounded-3xl h-9">
+    <div onClick={handleUserChange} className="cursor-pointer hidden sm:block">
+      <div className="sm:flex items-center justify-center p-3 bg-blue-500 rounded-3xl h-9">
         <p className="text-white text-xl">{firstLetter}</p>
       </div>
     </div>

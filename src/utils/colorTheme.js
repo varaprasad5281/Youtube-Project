@@ -3,17 +3,21 @@ import { createSlice } from "@reduxjs/toolkit";
 const colorSlice = createSlice({
   name: "color",
   initialState: {
-    backgroundColor: "white",
-    textColor: "black",
+    styles: ["bg-white text-black"],
+    isDarkMode: false,
   },
   reducers: {
-    addBackground: (state) => {
-      state.backgroundColor = "black";
+    addTheme: (state) => {
+      state.isDarkMode = !state.isDarkMode;
+      state.styles = state.isDarkMode
+        ? ["bg-black text-white"]
+        : ["bg-white text-black"];
     },
-    addFontColor: (state) => {
-      state.backgroundColor = "white";
+    setColors: (state, action) => {
+      state.styles = action.payload;
     },
   },
 });
-export const { addBackground, addFontColor } = colorSlice.actions;
+
+export const { addTheme, setColors } = colorSlice.actions;
 export default colorSlice.reducer;

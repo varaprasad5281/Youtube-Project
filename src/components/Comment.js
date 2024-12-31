@@ -7,6 +7,8 @@ import { RiDeleteBin6Line } from "react-icons/ri";
 const Comment = () => {
   const allComments = useSelector((store) => store.comments?.comments);
   const userName = useSelector((store) => store.user.name);
+  const themeData = useSelector((store) => store.colors.styles[0]);
+
   const dispatch = useDispatch();
   const handleRemoveComment = (index) => {
     dispatch(removeComment(index));
@@ -18,7 +20,7 @@ const Comment = () => {
           return (
             <div
               key={index}
-              className="cursor-pointer flex justify-between shadow-sm bg-gray-100 p-2 rounded-lg my-2"
+              className={`${themeData} bg-transparent cursor-pointer flex justify-between shadow-sm p-2 rounded-lg my-2`}
             >
               <div className="flex">
                 <Avatar />
@@ -29,7 +31,7 @@ const Comment = () => {
               </div>
               <button
                 onClick={() => handleRemoveComment(index)}
-                className="p-2 bg-red-600 rounded-lg text-white"
+                className="p-2 bg-red-600 rounded-lg h-10"
               >
                 <RiDeleteBin6Line />
               </button>

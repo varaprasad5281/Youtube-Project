@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { closeMenu } from "../utils/appSlice";
 import { useSearchParams } from "react-router-dom";
 import CommentsContainer from "./CommentsContainer";
@@ -12,6 +12,7 @@ const WatchPage = () => {
   useChannelDetails();
   const dispatch = useDispatch();
   const [isRecommended, setIsRecommended] = useState(true);
+  const themeData = useSelector((store) => store.colors.styles[0]);
 
   useEffect(() => {
     dispatch(closeMenu());
@@ -21,7 +22,7 @@ const WatchPage = () => {
   };
 
   return (
-    <div className="p-2 flex flex-col w-full mt-3">
+    <div className={`${themeData} p-2 flex flex-col w-full pt-3`}>
       <div className="sm:flex justify-between w-full gap-5 sm:px-2">
         <div className="flex-col md:w-full md:flex">
           <iframe
