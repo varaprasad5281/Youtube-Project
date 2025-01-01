@@ -26,7 +26,7 @@ const WatchPage = () => {
       <div className="sm:flex justify-between w-full gap-5 sm:px-2">
         <div className="flex-col md:w-full md:flex">
           <iframe
-            className="w-full rounded-lg"
+            className="w-full rounded-lg cursor-pointer"
             height="500"
             src={"https://www.youtube.com/embed/" + searchParams.get("v")}
             title="YouTube video player"
