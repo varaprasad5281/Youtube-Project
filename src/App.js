@@ -7,6 +7,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Main from "./components/Main";
 import WatchPage from "./components/WatchPage";
 import Popup from "./components/Popup";
+import ScrollToTop from "./components/ScrollTop";
 
 const appRouter = createBrowserRouter([
   {
