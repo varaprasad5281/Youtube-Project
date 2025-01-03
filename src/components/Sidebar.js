@@ -1,247 +1,118 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { IoMdHome } from "react-icons/io";
+import { button } from "react-router-dom";
+import { IoMdHome, IoMdTrendingUp } from "react-icons/io";
 import { SiYoutubeshorts } from "react-icons/si";
-import { MdOutlineSubscriptions } from "react-icons/md";
-import { IoMdTrendingUp } from "react-icons/io";
-import { MdOutlineShoppingBag } from "react-icons/md";
-import { FaMusic } from "react-icons/fa";
+import {
+  MdOutlineSubscriptions,
+  MdOutlineShoppingBag,
+  MdNewspaper,
+} from "react-icons/md";
+import { FaMusic, FaPodcast } from "react-icons/fa";
 import { BiCameraMovie } from "react-icons/bi";
 import { CgMediaLive } from "react-icons/cg";
 import { GrGamepad } from "react-icons/gr";
-import { MdNewspaper } from "react-icons/md";
 import { GiTrophyCup } from "react-icons/gi";
-import { FaPodcast } from "react-icons/fa";
 import { addSearchTerm } from "../utils/searchSlice";
+
+const SidebarItem = ({ icon, label, onClick }) => {
+  const textColor = useSelector((store) => store.colors.isDarkMode);
+
+  return (
+    <li
+      className={`px-3 py-2 flex gap-4 items-center rounded-md cursor-pointer ${
+        textColor ? "text-white" : "text-black"
+      } hover:bg-gray-300 hover:text-black`}
+    >
+      <button
+        onClick={onClick}
+        className="flex items-center gap-4 w-full text-left"
+        aria-label={label}
+      >
+        {icon}
+        {label}
+      </button>
+    </li>
+  );
+};
 
 const Sidebar = () => {
   const isMenuOpen = useSelector((store) => store.app.isMenuOpen);
-  const dispatch = useDispatch();
   const themeData = useSelector((store) => store.colors.styles[0]);
-  const textColor = useSelector((store) => store.colors.isDarkMode);
+  const dispatch = useDispatch();
 
-  // Early return
   if (!isMenuOpen) return null;
+
   const handleSidebarClick = (name) => {
     dispatch(addSearchTerm(name));
   };
 
+  const mainMenuItems = [
+    { icon: <IoMdHome />, label: "Home", key: "All" },
+    { icon: <SiYoutubeshorts />, label: "Shorts", key: "Shorts" },
+    {
+      icon: <MdOutlineSubscriptions />,
+      label: "Subscriptions",
+      key: "subscriptions",
+    },
+  ];
+
+  const exploreItems = [
+    { icon: <IoMdTrendingUp />, label: "Trending", key: "trending" },
+    { icon: <MdOutlineShoppingBag />, label: "Shopping", key: "shopping" },
+    { icon: <FaMusic />, label: "Music", key: "music" },
+    { icon: <BiCameraMovie />, label: "Movies", key: "movies" },
+    { icon: <CgMediaLive />, label: "Live", key: "live" },
+    { icon: <GrGamepad />, label: "Gaming", key: "gaming" },
+    { icon: <MdNewspaper />, label: "News", key: "news" },
+    { icon: <GiTrophyCup />, label: "Sports", key: "sports" },
+    { icon: <FaPodcast />, label: "Podcast", key: "podcast" },
+  ];
+
+  const subscriptionItems = [
+    { label: "Aditya Music", key: "aditya music" },
+    { label: "Filmymoji", key: "filmymoji" },
+    { label: "T-series", key: "t-series" },
+    { label: "Hindustan Times", key: "hindustan times" },
+  ];
+
   return (
     <div
-      className={`${themeData} sticky h-[93vh] p-5 shadow-lg min-w-[15%] top-16 bottom- overflow-y-auto max-lg:hidden`}
+      className={`${themeData} sticky h-[93vh] p-5 shadow-lg min-w-[15%] top-16 overflow-y-auto max-lg:hidden`}
     >
       <ul className="flex flex-col gap-2">
-        <li
-          className={`px-3 py-2 flex gap-4 items-center rounded-md cursor-pointer ${
-            textColor ? "text-white" : "text-black"
-          } hover:bg-gray-300 hover:text-black`}
-        >
-          <button
-            onClick={() => handleSidebarClick("All")}
-            className="flex items-center gap-4 w-full text-left"
-          >
-            <IoMdHome />
-            Home
-          </button>
-        </li>
-        <li
-          className={`px-3 py-2 flex gap-4 items-center rounded-md cursor-pointer ${
-            textColor ? "text-white" : "text-black"
-          } hover:bg-gray-300 hover:text-black`}
-        >
-          <button
-            onClick={() => handleSidebarClick("Shorts")}
-            className="flex items-center gap-4 w-full text-left"
-          >
-            <SiYoutubeshorts />
-            Shorts
-          </button>
-        </li>
-        <li
-          className={`px-3 py-2 flex gap-4 items-center rounded-md cursor-pointer ${
-            textColor ? "text-white" : "text-black"
-          } hover:bg-gray-300 hover:text-black`}
-        >
-          <button
-            onClick={() => handleSidebarClick("subscriptions")}
-            className="flex items-center gap-4 w-full text-left"
-          >
-            <MdOutlineSubscriptions />
-            Subscriptions
-          </button>
-        </li>
+        {mainMenuItems.map(({ icon, label, key }) => (
+          <SidebarItem
+            key={key}
+            icon={icon}
+            label={label}
+            onClick={() => handleSidebarClick(key)}
+          />
+        ))}
       </ul>
 
       <h1 className="font-bold py-5">Explore</h1>
       <ul className="flex flex-col gap-2">
-        <li
-          className={`px-3 py-2 flex gap-4 items-center rounded-md cursor-pointer ${
-            textColor ? "text-white" : "text-black"
-          } hover:bg-gray-300 hover:text-black`}
-        >
-          <button
-            onClick={() => handleSidebarClick("trending")}
-            className="flex items-center gap-4 w-full text-left"
-          >
-            <IoMdTrendingUp />
-            Trending
-          </button>
-        </li>
-        <li
-          className={`px-3 py-2 flex gap-4 items-center rounded-md cursor-pointer ${
-            textColor ? "text-white" : "text-black"
-          } hover:bg-gray-300 hover:text-black`}
-        >
-          <button
-            onClick={() => handleSidebarClick("shopping")}
-            className="flex items-center gap-4 w-full text-left"
-          >
-            <MdOutlineShoppingBag />
-            Shopping
-          </button>
-        </li>
-        <li
-          className={`px-3 py-2 flex gap-4 items-center rounded-md cursor-pointer ${
-            textColor ? "text-white" : "text-black"
-          } hover:bg-gray-300 hover:text-black`}
-        >
-          <button
-            onClick={() => handleSidebarClick("music")}
-            className="flex items-center gap-4 w-full text-left"
-          >
-            <FaMusic />
-            Music
-          </button>
-        </li>
-        <li
-          className={`px-3 py-2 flex gap-4 items-center rounded-md cursor-pointer ${
-            textColor ? "text-white" : "text-black"
-          } hover:bg-gray-300 hover:text-black`}
-        >
-          <button
-            onClick={() => handleSidebarClick("movies")}
-            className="flex items-center gap-4 w-full text-left"
-          >
-            <BiCameraMovie />
-            Movies
-          </button>
-        </li>
-        <li
-          className={`px-3 py-2 flex gap-4 items-center rounded-md cursor-pointer ${
-            textColor ? "text-white" : "text-black"
-          } hover:bg-gray-300 hover:text-black`}
-        >
-          <button
-            onClick={() => handleSidebarClick("live")}
-            className="flex items-center gap-4 w-full text-left"
-          >
-            <CgMediaLive />
-            Live
-          </button>
-        </li>
-        <li
-          className={`px-3 py-2 flex gap-4 items-center rounded-md cursor-pointer ${
-            textColor ? "text-white" : "text-black"
-          } hover:bg-gray-300 hover:text-black`}
-        >
-          <button
-            onClick={() => handleSidebarClick("gaming")}
-            className="flex items-center gap-4 w-full text-left"
-          >
-            <GrGamepad />
-            Gaming
-          </button>
-        </li>
-        <li
-          className={`px-3 py-2 flex gap-4 items-center rounded-md cursor-pointer ${
-            textColor ? "text-white" : "text-black"
-          } hover:bg-gray-300 hover:text-black`}
-        >
-          <button
-            onClick={() => handleSidebarClick("news")}
-            className="flex items-center gap-4 w-full text-left"
-          >
-            <MdNewspaper />
-            News
-          </button>
-        </li>
-        <li
-          className={`px-3 py-2 flex gap-4 items-center rounded-md cursor-pointer ${
-            textColor ? "text-white" : "text-black"
-          } hover:bg-gray-300 hover:text-black`}
-        >
-          <button
-            onClick={() => handleSidebarClick("sports")}
-            className="flex items-center gap-4 w-full text-left"
-          >
-            <GiTrophyCup />
-            Sports
-          </button>
-        </li>
-        <li
-          className={`px-3 py-2 flex gap-4 items-center rounded-md cursor-pointer ${
-            textColor ? "text-white" : "text-black"
-          } hover:bg-gray-300 hover:text-black`}
-        >
-          <button
-            onClick={() => handleSidebarClick("podcast")}
-            className="flex items-center gap-4 w-full text-left"
-          >
-            <FaPodcast />
-            Podcast
-          </button>
-        </li>
+        {exploreItems.map(({ icon, label, key }) => (
+          <SidebarItem
+            key={key}
+            icon={icon}
+            label={label}
+            onClick={() => handleSidebarClick(key)}
+          />
+        ))}
       </ul>
+
       <h1 className="font-bold py-5">Subscription</h1>
       <ul className="flex flex-col gap-2">
-        <li
-          className={`px-3 py-2 flex gap-4 items-center rounded-md cursor-pointer ${
-            textColor ? "text-white" : "text-black"
-          } hover:bg-gray-300 hover:text-black`}
-        >
-          <button
-            onClick={() => handleSidebarClick("aditya music")}
-            className="flex items-center gap-4 w-full text-left"
-          >
-            Aditya Music
-          </button>
-        </li>
-        <li
-          className={`px-3 py-2 flex gap-4 items-center rounded-md cursor-pointer ${
-            textColor ? "text-white" : "text-black"
-          } hover:bg-gray-300 hover:text-black`}
-        >
-          <button
-            onClick={() => handleSidebarClick("filmymoji")}
-            className="flex items-center gap-4 w-full text-left"
-          >
-            Filmymoji
-          </button>
-        </li>
-        <li
-          className={`px-3 py-2 flex gap-4 items-center rounded-md cursor-pointer ${
-            textColor ? "text-white" : "text-black"
-          } hover:bg-gray-300 hover:text-black`}
-        >
-          <button
-            onClick={() => handleSidebarClick("t-series")}
-            className="flex items-center gap-4 w-full text-left"
-          >
-            T-series
-          </button>
-        </li>
-        <li
-          className={`px-3 py-2 flex gap-4 items-center rounded-md cursor-pointer ${
-            textColor ? "text-white" : "text-black"
-          } hover:bg-gray-300 hover:text-black`}
-        >
-          <button
-            onClick={() => handleSidebarClick("Hindustan times")}
-            className="flex items-center gap-4 w-full text-left"
-          >
-            Hindustan Times
-          </button>
-        </li>
+        {subscriptionItems.map(({ label, key }) => (
+          <SidebarItem
+            key={key}
+            icon={null} // No icon for subscription items
+            label={label}
+            onClick={() => handleSidebarClick(key)}
+          />
+        ))}
       </ul>
     </div>
   );
