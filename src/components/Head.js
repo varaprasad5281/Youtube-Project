@@ -72,6 +72,10 @@ const Head = () => {
     setShowSuggestions(false);
   };
 
+  const handleBlur = () => {
+    setShowSuggestions(false);
+  };
+
   const searchValue = searchQuery.length > 1;
 
   return (
@@ -102,7 +106,7 @@ const Head = () => {
               {/* <p className="text-3xl">V</p> */}
               <img className="w-8" src={LOGO_LINK} alt="logo" />
             </div>
-            <p className="text-3xl">Hub</p>
+            <p className="text-3xl hidden sm:block">Hub</p>
           </div>
         </a>
       </div>
@@ -114,7 +118,7 @@ const Head = () => {
             value={searchQuery}
             onFocus={() => setShowSuggestions(true)}
             onChange={(e) => setSearchQuery(e.target.value)}
-            // onBlur={() => setShowSuggestions(false)}
+            onBlur={handleBlur}
             placeholder="Search"
           />
           <button

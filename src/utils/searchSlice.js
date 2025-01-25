@@ -8,7 +8,7 @@ const searchSlice = createSlice({
   },
   reducers: {
     cacheReuslts: (state, action) => {
-      state = Object.assign(state, action.payload); // Merging the objects
+      state = Object.assign(state, action.payload);
     },
     addSearchTerm: (state, action) => {
       state.searchTermVideo = action.payload;
