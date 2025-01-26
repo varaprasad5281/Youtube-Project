@@ -72,9 +72,9 @@ const Head = () => {
     setShowSuggestions(false);
   };
 
-  const handleBlur = () => {
-    setShowSuggestions(false);
-  };
+  // const handleBlur = () => {
+  //   setShowSuggestions(false);
+  // };
 
   const searchValue = searchQuery.length > 1;
 
@@ -118,7 +118,7 @@ const Head = () => {
             value={searchQuery}
             onFocus={() => setShowSuggestions(true)}
             onChange={(e) => setSearchQuery(e.target.value)}
-            onBlur={handleBlur}
+            // onBlur={handleBlur}
             placeholder="Search"
           />
           <button
